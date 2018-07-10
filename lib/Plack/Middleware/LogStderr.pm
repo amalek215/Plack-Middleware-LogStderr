@@ -141,10 +141,6 @@ __END__
 
 =encoding UTF-8
 
-=head1 NAME
-
-Plack::Middleware::LogStderr - redirect STDERR output to a defined logger
-
 =head1 SYNOPSIS
 
 Using a logger you have already configured (using L<Log::Dispatch> as an
