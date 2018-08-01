@@ -8,7 +8,7 @@ Plack::Middleware::LogStderr - Everything printed to STDERR sent to psgix.logger
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -71,10 +71,6 @@ C<STDERR> output into one message. The drawback here is log messages may not be
 interleaved temporally with messages generated from the tied method or other
 calls to the logger.
 
-=head1 NAME
-
-Plack::Middleware::LogStderr - redirect STDERR output to a defined logger
-
 =head1 CONFIGURATION
 
 =head2 C<logger>
@@ -116,6 +112,12 @@ The drawback is all C<STDERR> output created during a request is grouped
 together as one message and logged together after the request has finished
 processesing.
 
+=head2 C<no_warnings>
+
+By default when C<STDERR> is tied the package will emit a warning if OPEN or BINMODE
+is called on the tied handle.  Using C<no_warnings> will silence the warnings.
+Very useful if you are using warnings fatal all.
+
 =head1 SEE ALSO
 
 =over 4
@@ -153,10 +155,6 @@ Karen Etheridge
 =head1 SOURCE
 
 The source code repository for Plack-Middleware-LogStderr can be found at L<https://github.com/amalek215/Plack-Middleware-LogStderr>
-
-=head1 AUTHOR
-
-Alex Malek <amalek@cpan.org>
 
 =head1 AUTHOR
 
