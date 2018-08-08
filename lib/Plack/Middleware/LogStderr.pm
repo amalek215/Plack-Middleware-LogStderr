@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Plack::Middleware::LogStderr;
-$Plack::Middleware::LogStderr::VERSION = '0.002';
+$Plack::Middleware::LogStderr::VERSION = '0.003';
 # ABSTRACT: Everything printed to STDERR sent to psgix.logger or other logger
 # KEYWORDS: plack middleware errors logging environment I/O handle stderr
 
@@ -129,6 +129,14 @@ sub BINMODE {
     my ($self) = @_;
     if (warnings::enabled() && !$self->{no_warnings}) {
         warnings::warn("binmode called on tied handle Handle2Logger");
+    }
+    return undef;
+}
+
+sub FILENO {
+    my ($self) = @_;
+    if (warnings::enabled() && !$self->{no_warnings}) {
+        warnings::warn("fileno called on tied handle Handle2Logger");
     }
     return undef;
 }
