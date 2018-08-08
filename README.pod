@@ -8,7 +8,7 @@ Plack::Middleware::LogStderr - Everything printed to STDERR sent to psgix.logger
 
 =head1 VERSION
 
-version 0.002
+version 1.000
 
 =head1 SYNOPSIS
 
@@ -111,12 +111,6 @@ The benefit of this is all output sent to C<STDERR> is in order.
 The drawback is all C<STDERR> output created during a request is grouped
 together as one message and logged together after the request has finished
 processesing.
-
-=head2 C<no_warnings>
-
-By default when C<STDERR> is tied the package will emit a warning if OPEN or BINMODE
-is called on the tied handle.  Using C<no_warnings> will silence the warnings.
-Very useful if you are using warnings fatal all.
 
 =head1 SEE ALSO
 
